@@ -26,4 +26,29 @@ describe("Filtrar PEIs do professor pelo status", () => {
     cy.get('textarea[id="id_assessments"]').type("Avaliação de teste");
     cy.get("button").contains("Salvar").click();
   });
+
+  it("Cria um novo discente", () => {
+    cy.navigateToCreateStudent();
+    cy.get('input[id="id_image"]').attachFile("feliz.jpg");
+    cy.get('input[id="id_name"]').type("Discente de Teste");
+    cy.get('input[id="id_email"]').type("juvenal@teste.com");
+    cy.get('select[id="id_course"]').select(
+      "Alimentos Técnico Integrado - Noturno"
+    );
+    cy.get("input[id=id_registration]").type("123456789");
+    cy.get('input[id="id_reference_period"]').type("1");
+    cy.get('label[for="sector_NAPNE"]').click();
+    cy.get('label[for="3"]').click();
+    cy.get('textarea[id="id_personal_history"]').type("Historico de teste");
+    cy.get('textarea[id="id_specific_necessities"]').type(
+      "Necessidades de teste"
+    );
+    cy.get('textarea[id="id_abilities"]').type("Habilidades de teste");
+    cy.get('textarea[id="id_dificulties"]').type("Dificuldades de teste");
+    cy.get("textarea[id=id_general_necessitie]").type(
+      "Outras necessidades de teste"
+    );
+    cy.get('textarea[id="id_creation_reasons"]').type("Motivos de teste");
+    cy.get("button").contains("Salvar").click();
+  });
 });
