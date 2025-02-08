@@ -80,11 +80,15 @@ Cypress.Commands.add("navigateToCreateStudent", () => {
   cy.url().should("include", "/people/student/create/");
 });
 
-// Navegar para criacao de ofertas
-Cypress.Commands.add("navigateToCreateOffer", () => {
+Cypress.Commands.add("navigateToOffersList", () => {
   cy.navigateToAcademicsDashboard();
   cy.get('a[href="/academics/offers/list/"]').click();
   cy.url().should("include", "/academics/offers/list/");
+});
+
+// Navegar para criacao de ofertas
+Cypress.Commands.add("navigateToCreateOffer", () => {
+  cy.navigateToOffersList();
   cy.get('a[href="/academics/offers/create/"]').click();
   cy.url().should("include", "/academics/offers/create/");
 });
