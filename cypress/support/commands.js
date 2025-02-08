@@ -72,12 +72,25 @@ Cypress.Commands.add("selectGroup", (selector, value) => {
   cy.get(`select[name=${selector}]`).select(value);
 });
 
-// Navegar para criacao de cursos
-Cypress.Commands.add("navigateToCreateCourse", () => {
+Cypress.Commands.add("navigateToAcademicsDashboard", (selector, value) => {
   cy.get('li > a[href="/academics/dashboard/"]').click();
   cy.url().should("include", "/academics/dashboard/");
+});
+
+// Navegar para criacao de cursos
+Cypress.Commands.add("navigateToCreateCourse", () => {
+  cy.navigateToAcademicsDashboard();
   cy.get('a[href="/academics/course/list/"]').click();
   cy.url().should("include", "/academics/course/list/");
   cy.get("a[href='/academics/course/create/']").click();
   cy.url().should("include", "/academics/course/create/");
+});
+
+// Navegar para criacao de disciplinas
+Cypress.Commands.add("navigateToCreateDiscipline", () => {
+  cy.navigateToAcademicsDashboard();
+  cy.get('a[href="/academics/subjects/list/"]').click();
+  cy.url().should("include", "/academics/subjects/list/");
+  cy.get('a[href="/academics/subjects/create/"]').click();
+  cy.url().should("include", "/academics/subjects/create/");
 });
