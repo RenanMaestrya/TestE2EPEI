@@ -51,4 +51,19 @@ describe("Filtrar PEIs do professor pelo status", () => {
     cy.get('textarea[id="id_creation_reasons"]').type("Motivos de teste");
     cy.get("button").contains("Salvar").click();
   });
+
+  it("Criar oferta", () => {
+    cy.navigateToCreateOffer();
+    cy.get('select[id="id_course"]').select(
+      "Alimentos Técnico Integrado - Noturno"
+    );
+    cy.get('select[id="id_subject"]').select(
+      "Fundamentos de Lógica e Algoritmos"
+    );
+    cy.get('label[for="72"]').click();
+    cy.get('select[id="id_status"]').select("Aberta");
+    cy.get('input[id="id_year"]').type("2025");
+    cy.get('select[id="id_semester"]').select("2º Semestre");
+    cy.get("button").contains("Salvar").click();
+  });
 });
